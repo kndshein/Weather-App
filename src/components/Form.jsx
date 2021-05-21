@@ -106,28 +106,6 @@ const Form = ({
         setLngError(false);
       }
     }
-    // if (!formData[locationsCounter]) {
-    //   setLatError(true);
-    //   setLngError(true);
-    // } else {
-    //   if (
-    //     formData[locationsCounter].lat > 90 ||
-    //     formData[locationsCounter].lat < -90
-    //   ) {
-    //     setLatError(true);
-    //   } else if (
-    //     formData[locationsCounter].lng > 180 ||
-    //     formData[locationsCounter].lng < -180
-    //   ) {
-    //     setLngError(true);
-    //   } else {
-    //     setLatError(false);
-    //     setLngError(false);
-    //     if (locationsCounter < generate) {
-    //       setLocationsCounter(locationsCounter + 1);
-    //     }
-    //   }
-    // }
   };
 
   return (
@@ -157,9 +135,12 @@ const Form = ({
           }
         />
       </form>
+      {/* Latitude and Longitutde errors that pops up based on state */}
       {latError && <div>Please enter a valid Latitude.</div>}
       {lngError && <div>Please enter a valid Longitude.</div>}
+      {/* Previous button (disabled if current location is the first one) */}
       {locationsCounter !== 1 && <button onClick={handlePrev}>Prev</button>}
+      {/* Next button (disabled if current location is the last one) */}
       {locationsCounter < generate && (
         <button onClick={handleNext}>Next</button>
       )}

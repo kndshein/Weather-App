@@ -7,7 +7,8 @@ import Form from "./components/Form";
 import Sunset from "./components/Sunset";
 import Map from "./components/Map";
 
-import "./App.css";
+import "./styles/App.css";
+
 const generate = 3; // TODO: Variable to determine how many locations for the app
 
 function App() {
@@ -74,6 +75,7 @@ function App() {
 
   return (
     <div className="App">
+      {/* Maps through Forms (disables when sunsets are submitted) */}
       {!sunsets && (
         <div className="forms">
           {formCount?.map((_, index) => {
@@ -91,11 +93,13 @@ function App() {
               )
             );
           })}
+          {/* Submit button only shows at last Form */}
           {locationsCounter === generate && (
             <button onClick={handleSubmit}>Submit Locations</button>
           )}
         </div>
       )}
+      {/* Maps through array of sunset data */}
       {sunsets && (
         <>
           <div className="sunsets-container">
@@ -109,6 +113,7 @@ function App() {
                 );
               })}
           </div>
+          {/* Edit and Reset buttons that only show when sunset data has been generated */}
           <button onClick={handleEdit}>Edit Locations</button>
           <button onClick={handleReset}>Reset Locations</button>
         </>
