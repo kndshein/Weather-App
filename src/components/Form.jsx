@@ -8,8 +8,6 @@ const Form = ({
   generate,
   index,
 }) => {
-  //   const [formData, setFormData] = React.useState({ lat: "", lng: "" });
-
   const handleOnChange = (event) => {
     setFormData({
       ...formData,
@@ -41,12 +39,22 @@ const Form = ({
           type="number"
           name="lat"
           placeholder="Latitude"
+          value={
+            formData[locationsCounter]
+              ? formData[locationsCounter].lat
+              : formData[0].lat
+          }
         />
         <input
           onChange={handleOnChange}
           type="number"
           name="lng"
           placeholder="Longitude"
+          value={
+            formData[locationsCounter]
+              ? formData[locationsCounter].lng
+              : formData[0].lng
+          }
         />
       </form>
       <button onClick={handlePrev}>Prev</button>
