@@ -1,16 +1,18 @@
+// Dependencies imports
 import React from "react";
 import axios from "axios";
 
+// Component imports
 import Form from "./components/Form";
 import Sunset from "./components/Sunset";
+import Map from "./components/Map";
 
 import "./App.css";
-
-const generate = 3; // Variable to determine how many locations for the app
+const generate = 3; // TODO: Variable to determine how many locations for the app
 
 function App() {
   // Get keys from .env file
-  const { REACT_APP_WEATHERAPI, REACT_APP_MAPBOXAPI } = process.env;
+  const { REACT_APP_WEATHERAPI } = process.env;
   // State to keep track of locations
   const [locations, setLocations] = React.useState({ 0: { lat: "", lng: "" } });
   // State to keep track of the current location in app
@@ -96,10 +98,15 @@ function App() {
       )}
       {sunsets && (
         <>
-          <div className="sunsets">
+          <div className="sunsets-container">
             {sunsets &&
               sunsets?.map((sunset, index) => {
-                return <Sunset key={index} sunsetData={sunset.data} />;
+                return (
+                  <div className="sunset" key={index}>
+                    <Map sunsetData={sunset.data} />
+                    <Sunset sunsetData={sunset.data} />
+                  </div>
+                );
               })}
           </div>
           <button onClick={handleEdit}>Edit Locations</button>

@@ -1,7 +1,6 @@
 import React from "react";
 
 const Sunset = ({ sunsetData }) => {
-  console.log(sunsetData);
   return (
     <>
       <div>
