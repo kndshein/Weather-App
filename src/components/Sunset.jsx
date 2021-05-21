@@ -7,7 +7,7 @@ const Sunset = ({ sunsetData }) => {
         {sunsetData?.location.region}, {sunsetData?.location.country}
       </div>
       <div>Sunrise: {sunsetData?.astronomy.astro.sunrise}</div>
-      <div>Sunrise: {sunsetData?.astronomy.astro.sunset}</div>
+      <div>Sunset: {sunsetData?.astronomy.astro.sunset}</div>
     </>
   );
 };

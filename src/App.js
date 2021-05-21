@@ -77,27 +77,32 @@ function App() {
     <div className="App">
       {/* Maps through Forms (disables when sunsets are submitted) */}
       {!sunsets && (
-        <div className="forms">
-          {formCount?.map((_, index) => {
-            return (
-              locationsCounter === index + 1 && (
-                <Form
-                  key={index}
-                  index={index + 1}
-                  formData={locations}
-                  setFormData={setLocations}
-                  locationsCounter={locationsCounter}
-                  setLocationsCounter={setLocationsCounter}
-                  generate={generate}
-                />
-              )
-            );
-          })}
-          {/* Submit button only shows at last Form */}
-          {locationsCounter === generate && (
-            <button onClick={handleSubmit}>Submit Locations</button>
-          )}
-        </div>
+        <>
+          <div className="welcome-message">
+            Please enter {generate} desired locations to be searched!
+          </div>
+          <div className="forms">
+            {formCount?.map((_, index) => {
+              return (
+                locationsCounter === index + 1 && (
+                  <Form
+                    key={index}
+                    index={index + 1}
+                    formData={locations}
+                    setFormData={setLocations}
+                    locationsCounter={locationsCounter}
+                    setLocationsCounter={setLocationsCounter}
+                    generate={generate}
+                  />
+                )
+              );
+            })}
+            {/* Submit button only shows at last Form */}
+            {locationsCounter === generate && (
+              <button onClick={handleSubmit}>Submit Locations</button>
+            )}
+          </div>
+        </>
       )}
       {/* Maps through array of sunset data */}
       {sunsets && (
