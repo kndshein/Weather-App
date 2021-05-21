@@ -8,8 +8,156 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 100vw;
-  height: 100vh;
-  background-color: tan;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: calc(100vw);
+  height: calc(100vh);
+  padding: 50px;
+  font-size: 2rem;
+  background: -webkit-gradient(linear, right top, left top, from(#c2e9f2), color-stop(#f2e9c2), to(#f3dcdc));
+  background: linear-gradient(270deg, #c2e9f2, #f2e9c2, #f3dcdc);
+  background-size: 600% 600%;
+  -webkit-animation: BackgroundGradient 30s ease infinite;
+  animation: BackgroundGradient 30s ease infinite;
+}
+
+.App .welcome-message {
+  color: #0d495c;
+}
+
+.App button {
+  padding: 15px 30px 15px 30px;
+  border: none;
+  background-color: #45bbdf;
+  font-size: 2rem;
+}
+
+.App button:hover {
+  -webkit-box-shadow: 5px 5px 0 #97def3;
+          box-shadow: 5px 5px 0 #97def3;
+}
+
+.App button:active {
+  color: white;
+  background-color: #0d495c;
+}
+
+@-webkit-keyframes BackgroundGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes BackgroundGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.form-container form .form-location {
+  display: inline-block;
+}
+
+.form-container form input {
+  border: none;
+  border-bottom: 1px solid #aaaaaa;
+  width: 10rem;
+  background: transparent;
+  color: #aaaaaa;
+  font-size: 2rem;
+}
+
+.form-container form input::-webkit-input-placeholder {
+  color: #aaaaaa;
+}
+
+.form-container form input:-ms-input-placeholder {
+  color: #aaaaaa;
+}
+
+.form-container form input::-ms-input-placeholder {
+  color: #aaaaaa;
+}
+
+.form-container form input::placeholder {
+  color: #aaaaaa;
+}
+
+.form-container form input:focus {
+  border-bottom: 2px solid black;
+  color: black;
+  outline: none;
+}
+
+.form-container form input::-webkit-outer-spin-button, .form-container form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.form-container form input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.form-container .error-messages-container {
+  visibility: hidden;
+  margin: 2rem 0 2rem 0;
+  color: darkred;
+  font-size: 1rem;
+}
+
+.form-container .error-messages-container .show {
+  visibility: visible;
+}
+
+.form-container .buttons-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.form-container .buttons-container button {
+  padding: 15px 30px 15px 30px;
+  border: none;
+  background-color: #45bbdf;
+  font-size: 2rem;
+}
+
+.form-container .buttons-container button:hover {
+  -webkit-box-shadow: 5px 5px 0 #97def3;
+          box-shadow: 5px 5px 0 #97def3;
+}
+
+.form-container .buttons-container button:active {
+  color: white;
+  background-color: #0d495c;
+}
+
+.form-container .buttons-container .submit-button {
+  background-color: darksalmon;
+}
+
+.form-container .buttons-container .submit-button:hover {
+  -webkit-box-shadow: 5px 5px 0 #ecc1bc;
+          box-shadow: 5px 5px 0 #ecc1bc;
+}
+
+.form-container .buttons-container .submit-button:active {
+  color: white;
+  background-color: #94443f;
 }
 /*# sourceMappingURL=App.css.map */

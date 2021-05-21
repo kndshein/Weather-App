@@ -9,7 +9,7 @@ import Map from "./components/Map";
 
 import "./styles/App.css";
 
-const generate = 3; // TODO: Variable to determine how many locations for the app
+const generate = 5; // TODO: Variable to determine how many locations for the app
 
 function App() {
   // Get keys from .env file
@@ -93,14 +93,11 @@ function App() {
                     locationsCounter={locationsCounter}
                     setLocationsCounter={setLocationsCounter}
                     generate={generate}
+                    handleSubmit={handleSubmit}
                   />
                 )
               );
             })}
-            {/* Submit button only shows at last Form */}
-            {locationsCounter === generate && (
-              <button onClick={handleSubmit}>Submit Locations</button>
-            )}
           </div>
         </>
       )}

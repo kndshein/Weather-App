@@ -1,10 +1,54 @@
+$base-color: #45bbdf;
+$lite-accent-color: #97def3;
+$dark-accent-color: #0d495c;
+$grey-color: #aaaaaa;
+
+$font-size: 2rem;
+
+// Button Design
+@mixin button {
+  button {
+    padding: 15px 30px 15px 30px;
+    border: none;
+    background-color: $base-color;
+    font-size: $font-size;
+
+    &:hover {
+      box-shadow: 5px 5px 0 $lite-accent-color;
+    }
+
+    &:active {
+      color: white;
+      background-color: $dark-accent-color;
+    }
+  }
+}
+
 body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
-  background-color: tan;
+  box-sizing: border-box;
+  width: calc(100vw);
+  height: calc(100vh);
+  padding: 50px;
+  font-size: $font-size;
+
+  background: linear-gradient(270deg, #c2e9f2, #f2e9c2, #f3dcdc);
+  background-size: 600% 600%;
+
+  -webkit-animation: BackgroundGradient 30s ease infinite;
+  -moz-animation: BackgroundGradient 30s ease infinite;
+  animation: BackgroundGradient 30s ease infinite;
 }
 
+.App {
+  .welcome-message {
+    color: $dark-accent-color;
+  }
+
+  @include button;
+}
+
+@import "./Gradient";
 @import "./Form";

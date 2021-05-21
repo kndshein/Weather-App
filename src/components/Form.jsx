@@ -7,6 +7,7 @@ const Form = ({
   setLocationsCounter,
   generate,
   index,
+  handleSubmit,
 }) => {
   // States for latlng errors
   const [latError, setLatError] = React.useState();
@@ -109,42 +110,58 @@ const Form = ({
   };
 
   return (
-    <>
-      <div>Location {index}</div>
+    <div className="form-container">
       <form>
+        <div className="form-location">Location {index} is at Latitude</div>{" "}
         <input
           onChange={handleOnChange}
           type="number"
           name="lat"
-          placeholder="Latitude"
+          placeholder="19.741755"
           value={
             formData[locationsCounter]
               ? formData[locationsCounter].lat
               : formData[0].lat
           }
-        />
+        />{" "}
+        and Longitude{" "}
         <input
           onChange={handleOnChange}
           type="number"
           name="lng"
-          placeholder="Longitude"
+          placeholder="-155.844437"
           value={
             formData[locationsCounter]
               ? formData[locationsCounter].lng
               : formData[0].lng
           }
-        />
+        />{" "}
+        .
       </form>
-      {/* Latitude and Longitutde errors that pops up based on state */}
-      {latError && <div>Please enter a valid Latitude.</div>}
-      {lngError && <div>Please enter a valid Longitude.</div>}
-      {/* Previous button (disabled if current location is the first one) */}
-      {locationsCounter !== 1 && <button onClick={handlePrev}>Prev</button>}
-      {/* Next button (disabled if current location is the last one) */}
-      {locationsCounter < generate && (
-        <button onClick={handleNext}>Next</button>
-      )}
-    </>
+      <div className="error-messages-container">
+        {/* Latitude and Longitutde errors that pops up based on state */}
+        <div className={`error-message ${latError ? "show" : ""}`}>
+          Please enter a valid Latitude.
+        </div>
+        <div className={`error-message ${lngError ? "show" : ""}`}>
+          Please enter a valid Longitude.
+        </div>
+      </div>
+      <div className="buttons-container">
+        {/* Previous button (disabled if current location is the first one) */}
+        {locationsCounter !== 1 && <button onClick={handlePrev}>Prev</button>}
+        {/* Next button (disabled if current location is the last one) */}
+        {locationsCounter < generate && (
+          <button onClick={handleNext}>Next</button>
+        )}
+        {/* Submit button only shows at last Form */}
+        {locationsCounter === generate && (
+          <button className="submit-button" onClick={handleSubmit}>
+            Submit Locations
+          </button>
+        )}
+      </div>
+    </div>
   );
 };
 

@@ -1,0 +1,66 @@
+.form-container {
+  form {
+    .form-location {
+      display: inline-block;
+    }
+
+    input {
+      border: none;
+      border-bottom: 1px solid $grey-color;
+      width: 10rem;
+      //   margin: 0px 10px 0px 10px;
+      background: transparent;
+      color: $grey-color;
+      font-size: $font-size;
+
+      &::placeholder {
+        color: $grey-color;
+      }
+
+      &:focus {
+        border-bottom: 2px solid black;
+        color: black;
+        outline: none;
+      }
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      &[type="number"] {
+        -moz-appearance: textfield;
+      }
+    }
+  }
+
+  .error-messages-container {
+    visibility: hidden;
+    margin: 2rem 0 2rem 0;
+    color: darkred;
+    font-size: 1rem;
+
+    .show {
+      visibility: visible;
+    }
+  }
+
+  .buttons-container {
+    display: flex;
+    justify-content: space-between;
+    @include button;
+
+    .submit-button {
+      background-color: darksalmon;
+
+      &:hover {
+        box-shadow: 5px 5px 0 rgb(236, 193, 188);
+      }
+
+      &:active {
+        color: white;
+        background-color: rgb(148, 68, 63);
+      }
+    }
+  }
+}
