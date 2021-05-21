@@ -1,32 +1,40 @@
 import React from "react";
 
 const Form = ({
-  location,
-  setLocation,
-  locationCounter,
-  setLocationCounter,
+  formData,
+  setFormData,
+  locationsCounter,
+  setLocationsCounter,
   generate,
+  index,
 }) => {
-  const [formData, setFormData] = React.useState({ lat: "", lng: "" });
+  //   const [formData, setFormData] = React.useState({ lat: "", lng: "" });
 
   const handleOnChange = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+    setFormData({
+      ...formData,
+      [locationsCounter]: {
+        ...formData[locationsCounter],
+        [event.target.name]: event.target.value,
+      },
+    });
   };
 
   const handlePrev = () => {
-    if (locationCounter > 1) {
-      setLocationCounter(locationCounter - 1);
+    if (locationsCounter > 1) {
+      setLocationsCounter(locationsCounter - 1);
     }
   };
 
   const handleNext = () => {
-    if (locationCounter < generate) {
-      setLocationCounter(locationCounter + 1);
+    if (locationsCounter < generate) {
+      setLocationsCounter(locationsCounter + 1);
     }
   };
 
   return (
     <>
+      <div>Location {index}</div>
       <form>
         <input
           onChange={handleOnChange}

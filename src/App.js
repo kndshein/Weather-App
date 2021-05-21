@@ -3,47 +3,38 @@ import "./App.css";
 
 import Form from "./components/Form";
 
-let generate = 3;
+const generate = 3;
 
 function App() {
-  const [location, setLocation] = React.useState({ 0: { lat: "", lng: "" } });
-  const [locationCounter, setLocationCounter] = React.useState(1);
-  // const [formCount, setFormCount] = React.useState()
+  // State to keep track of locations
+  const [locations, setLocations] = React.useState({ 0: { lat: "", lng: "" } });
+  // State to keep track of the current location in app
+  const [locationsCounter, setLocationsCounter] = React.useState(1);
+  // State to generate number of forms from generate
+  const [formCount, setFormCount] = React.useState();
 
-  // React.useEffect(() => {
-
-  // })
+  React.useEffect(() => {
+    const newArr = [...Array(generate).keys()];
+    setFormCount(newArr);
+  }, []);
 
   return (
     <div className="App">
-      <div>Hello!</div>
-      {locationCounter === 1 && (
-        <Form
-          location={location}
-          setLocation={setLocation}
-          locationCounter={locationCounter}
-          setLocationCounter={setLocationCounter}
-          generate={generate}
-        />
-      )}
-      {locationCounter === 2 && (
-        <Form
-          location={location}
-          setLocation={setLocation}
-          locationCounter={locationCounter}
-          setLocationCounter={setLocationCounter}
-          generate={generate}
-        />
-      )}
-      {locationCounter === 3 && (
-        <Form
-          location={location}
-          setLocation={setLocation}
-          locationCounter={locationCounter}
-          setLocationCounter={setLocationCounter}
-          generate={generate}
-        />
-      )}
+      {formCount?.map((_, index) => {
+        return (
+          locationsCounter === index + 1 && (
+            <Form
+              key={index}
+              index={index + 1}
+              formData={locations}
+              setFormData={setLocations}
+              locationsCounter={locationsCounter}
+              setLocationsCounter={setLocationsCounter}
+              generate={generate}
+            />
+          )
+        );
+      })}
     </div>
   );
 }
