@@ -10,7 +10,7 @@ const generate = 3; // Variable to determine how many locations for the app
 
 function App() {
   // Get keys from .env file
-  const { REACT_APP_WEATHERAPI } = process.env;
+  const { REACT_APP_WEATHERAPI, REACT_APP_MAPBOXAPI } = process.env;
   // State to keep track of locations
   const [locations, setLocations] = React.useState({ 0: { lat: "", lng: "" } });
   // State to keep track of the current location in app
@@ -18,7 +18,7 @@ function App() {
   // State to hold number of generated forms
   const [formCount, setFormCount] = React.useState();
   // State to store Sunsets
-  const [sunsets, setSunsets] = React.useState();
+  const [sunsets, setSunsets] = React.useState(null);
 
   React.useEffect(() => {
     // Generate forms based on generate variable
@@ -50,17 +50,25 @@ function App() {
   };
 
   // Function to trigger getSunsets (callback)
-  const handleGetSunsets = () => {
-    // Once all the promises are fulfilled, the sunset data is stored in 'sunsets' state
-    Promise.all(getSunsets()).then((data) => setSunsets(data));
+  const handleSubmit = () => {
+    // console.log();
+    if (Object.keys(locations).length - 1 === generate) {
+      // Once all the promises are fulfilled, the sunset data is stored in 'sunsets' state
+      Promise.all(getSunsets()).then((data) => setSunsets(data));
+    }
   };
 
-  // Function
+  // Function to edit the locations after revealing sunsets
+  const handleEdit = () => {
+    setSunsets(null);
+  };
 
   // Function to reset the locations
-  // const handleReset = () => {
-
-  // }
+  const handleReset = () => {
+    setLocationsCounter(1);
+    setSunsets(null);
+    setLocations({ 0: { lat: "", lng: "" } });
+  };
 
   return (
     <div className="App">
@@ -81,15 +89,23 @@ function App() {
               )
             );
           })}
+          {locationsCounter === generate && (
+            <button onClick={handleSubmit}>Submit Locations</button>
+          )}
         </div>
       )}
-      <button onClick={handleGetSunsets}>BOOP</button>
-      {sunsets &&
-        sunsets?.map((sunset, index) => {
-          return <Sunset key={index} sunsetData={sunset.data} />;
-        })}
-      {/* <button onClick={handleEdit}>Edit Locations</button> */}
-      {/* <button onClick={handleReset}>Reset Locations</button> */}
+      {sunsets && (
+        <>
+          <div className="sunsets">
+            {sunsets &&
+              sunsets?.map((sunset, index) => {
+                return <Sunset key={index} sunsetData={sunset.data} />;
+              })}
+          </div>
+          <button onClick={handleEdit}>Edit Locations</button>
+          <button onClick={handleReset}>Reset Locations</button>
+        </>
+      )}
     </div>
   );
 }

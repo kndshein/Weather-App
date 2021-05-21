@@ -58,7 +58,9 @@ const Form = ({
         />
       </form>
       <button onClick={handlePrev}>Prev</button>
-      <button onClick={handleNext}>Next</button>
+      {locationsCounter < generate && (
+        <button onClick={handleNext}>Next</button>
+      )}
     </>
   );
 };
