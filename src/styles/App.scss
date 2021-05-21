@@ -3,7 +3,9 @@ $lite-accent-color: #97def3;
 $dark-accent-color: #0d495c;
 $grey-color: #aaaaaa;
 
-$font-size: 2rem;
+$font-size: clamp(1rem, 2vw, 2rem);
+$font-size-sunset: clamp(1rem, 1.5vw, 1.5rem);
+$font-size-button: clamp(1rem, 2vw, 1.5rem);
 
 // Button Design
 @mixin button {
@@ -11,7 +13,7 @@ $font-size: 2rem;
     padding: 15px 30px 15px 30px;
     border: none;
     background-color: $base-color;
-    font-size: $font-size;
+    font-size: $font-size-button;
 
     &:hover {
       box-shadow: 5px 5px 0 $lite-accent-color;
@@ -47,8 +49,13 @@ body {
     color: $dark-accent-color;
   }
 
-  @include button;
+  .buttons-container {
+    display: flex;
+    justify-content: space-between;
+    @include button;
+  }
 }
 
 @import "./Gradient";
 @import "./Form";
+@import "./Sunsets";

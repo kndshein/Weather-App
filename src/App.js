@@ -116,8 +116,10 @@ function App() {
               })}
           </div>
           {/* Edit and Reset buttons that only show when sunset data has been generated */}
-          <button onClick={handleEdit}>Edit Locations</button>
-          <button onClick={handleReset}>Reset Locations</button>
+          <div className="buttons-container">
+            <button onClick={handleEdit}>Edit Locations</button>
+            <button onClick={handleReset}>Reset Locations</button>
+          </div>
         </>
       )}
     </div>
