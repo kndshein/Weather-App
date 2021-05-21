@@ -45,7 +45,7 @@ function App() {
       .map(async (location) => {
         return axios({
           method: "get",
-          url: `http://api.weatherapi.com/v1/astronomy.json?key=${REACT_APP_WEATHERAPI}&q=${locations[location].lat},${locations[location].lng}&dt=${queryDate}`,
+          url: `https://api.weatherapi.com/v1/astronomy.json?key=${REACT_APP_WEATHERAPI}&q=${locations[location].lat},${locations[location].lng}&dt=${queryDate}`,
         });
       });
 
