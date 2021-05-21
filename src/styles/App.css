@@ -29,6 +29,9 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 20px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -38,7 +41,7 @@ body {
   padding: 15px 30px 15px 30px;
   border: none;
   background-color: #45bbdf;
-  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-size: clamp(0.75rem, 2vw, 1.5rem);
 }
 
 .App .buttons-container button:hover {
@@ -143,7 +146,7 @@ body {
   padding: 15px 30px 15px 30px;
   border: none;
   background-color: #45bbdf;
-  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-size: clamp(0.75rem, 2vw, 1.5rem);
 }
 
 .form-container .buttons-container button:hover {
@@ -177,6 +180,9 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
@@ -190,11 +196,20 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  justify-self: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: calc(max(20vw, 200px));
+  width: calc(max(20vw, 100px));
 }
 
 .sunsets-container .sunset .location {

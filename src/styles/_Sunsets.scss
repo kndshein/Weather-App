@@ -1,6 +1,7 @@
 .sunsets-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-flow: row wrap;
   gap: 15px;
   margin-bottom: 50px;
@@ -8,8 +9,12 @@
 
   .sunset {
     display: flex;
+    justify-self: center;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    width: calc(max(20vw, 200px));
+    width: calc(max(20vw, 100px));
 
     .location {
       font-weight: bold;

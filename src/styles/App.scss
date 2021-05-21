@@ -5,7 +5,7 @@ $grey-color: #aaaaaa;
 
 $font-size: clamp(1rem, 2vw, 2rem);
 $font-size-sunset: clamp(1rem, 1.5vw, 1.5rem);
-$font-size-button: clamp(1rem, 2vw, 1.5rem);
+$font-size-button: clamp(0.75rem, 2vw, 1.5rem);
 
 // Button Design
 @mixin button {
@@ -51,6 +51,8 @@ body {
 
   .buttons-container {
     display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
     justify-content: space-between;
     @include button;
   }
